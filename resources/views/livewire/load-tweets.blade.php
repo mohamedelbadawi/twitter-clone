@@ -1,11 +1,10 @@
-<div>
+<div wire:poll>
 @foreach($tweets as $tweet)
     <!-- post starts -->
         <div class="post" style="margin: 30px">
             <div class="post__avatar">
                 <img
-                    src="{{asset('images/',$tweet->user->image_name)}}"
-                    alt=""
+                    src="{{asset('images/'.$tweet->user->image_name)}}" alt=""
                 />
             </div>
 
@@ -24,7 +23,7 @@
                     </div>
                 </div>
                 <img
-                    src="{{asset('images/'.$tweet->image_name)}}"
+                    src="{{asset('/storage/'.$tweet->image_name)}}"
                     alt=""
                 />
                 <div class="post__footer">

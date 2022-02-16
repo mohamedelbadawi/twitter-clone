@@ -20,7 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/h',function (){
-    return view('tweets.index');
-});
+
+Route::group(['middleware'=>'auth'],function(){
 Route::get('/tweets',[TweetController::class,'index']);
+});
+
+

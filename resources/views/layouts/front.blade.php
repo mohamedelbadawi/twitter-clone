@@ -7,12 +7,7 @@
     <title>Twitter Clone - Final</title>
     <link rel="stylesheet" href="{{asset('css/styles.css')}}" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <livewire:styles />
@@ -69,20 +64,6 @@
         <h2>Home</h2>
     </div>
 
-    <!-- tweetbox starts -->
-    <div class="tweetBox">
-        <form>
-            <div class="tweetbox__input">
-                <img
-                    src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
-                    alt=""
-                />
-                <input type="text" placeholder="What's happening?" />
-            </div>
-            <button class="tweetBox__tweetButton">Tweet</button>
-        </form>
-    </div>
-    <!-- tweetbox ends -->
 
         @yield('content')
 

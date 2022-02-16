@@ -238,3 +238,20 @@ body {
   font-size: 18px;
   font-weight: 800;
 }
+.profileimg{
+    display: flex;
+    justify-content: center;
+    margin-top:-40px ;
+    margin-left: 50px;
+}
+.profileName{
+display: flex;
+    justify-content: center;
+    margin-left: 8vh;
+}
+.img-fluid{
+    border-radius: 10px;
+}
+.profile_create_tweet{
+    margin-top:100px ;
+}

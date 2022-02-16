@@ -21,15 +21,16 @@ class CreateTweet extends Component
 
     public function store()
     {
-
         $data = $this->validate([
             'content' => 'required',
-            'image_name'=>'file'
+            'image_name'=>'nullable|file'
         ]);
 
 
         $data['user_id'] = auth()->id();
+        if ($this->image_name!='' && $this->image_name!=null){
         $data['image_name'] = $this->image_name->store('images','public');
+        }
         Tweet::create($data);
         $this->resetInputField();
     }

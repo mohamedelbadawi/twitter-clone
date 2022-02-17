@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use phpDocumentor\Reflection\Types\True_;
 
 class User extends Authenticatable
 {
@@ -49,9 +50,23 @@ class User extends Authenticatable
 
     public function following()
     {
-        return $this->belongsTo(User::class,'follower_id','following_id','followers');
+        return $this->belongsToMany(User::class,'follower_user','follower_id','following_id');
     }
     public function followers() {
-        return $this->belongsToMany(User::class, 'followers', 'following_id', 'follower_id');
+        return $this->belongsToMany(User::class,'follower_user', 'following_id', 'follower_id');
+    }
+
+    public function isFollowing($user)
+    {
+     $following=$this->following->pluck('id')->toArray();
+     if (in_array($user,$following)){
+         return true;
+     }
+     return false;
+    }
+
+    public function followingTweets()
+    {
+        return $this->following->tweets();
     }
 }

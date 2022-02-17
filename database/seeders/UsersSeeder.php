@@ -22,7 +22,7 @@ class UsersSeeder extends Seeder
             "name" => $faker->name(),
             "email" => $faker->unique()->freeEmail,
             "user_name"=>$faker->unique()->userName(),
-            "image_name"=>'profile.png',
+            "image_name"=>'user.png',
             "password"=>bcrypt("123456789"),
 
         ]);

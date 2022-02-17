@@ -16,7 +16,8 @@ class LoadTweets extends Component
 
     public function render()
     {
-        $tweets=Tweet::with('user')->latest()->paginate($this->perPage);
+        $followingUsers=auth()->user()->following->pluck('id')->toArray();
+        $tweets=Tweet::whereIn('user_id',$followingUsers)->latest()->paginate($this->perPage);
         return view('livewire.load-tweets',compact('tweets'));
     }
 }

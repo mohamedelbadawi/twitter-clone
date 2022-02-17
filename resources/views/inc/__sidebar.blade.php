@@ -2,8 +2,9 @@
 <div class="sidebar">
     <i class="fab fa-twitter"></i>
     <div class="sidebarOption {{request()->routeIs('home')?'active':''}}">
+
         <span class="material-icons"> home </span>
-        <h2>Home</h2>
+        <a href="{{route('home')}}" style="text-decoration: none;background-color: transparent;"><h2>Home</h2></a>
     </div>
 
     <div class="sidebarOption">
@@ -31,9 +32,9 @@
 {{--        <h2>Lists</h2>--}}
 {{--    </div>--}}
 
-    <div class="sidebarOption {{request()->routeIs('profile')?'active':''}}">
+    <div class="sidebarOption {{request()->routeIs('user')?'active':''}}">
         <span class="material-icons"> perm_identity </span>
-        <h2>Profile</h2>
+        <a href="{{route('user.profile')}}" style="text-decoration: none;" class="{{request()->routeIs('user')?'active':''}}" ><h2>Profile</h2></a>
     </div>
 
 {{--    <div class="sidebarOption">--}}

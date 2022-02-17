@@ -3933,6 +3933,7 @@ textarea.form-control-lg {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+
 }
 
 .nav-link {
@@ -4031,6 +4032,9 @@ textarea.form-control-lg {
   justify-content: space-between;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+    background-image: url("https://abs.twimg.com/a/1512226556/img/t1/lohp_streams_header_bg_v4.png");
+    background-size: 100% 100%;
+    /*border-bottom: 1px solid rgba(0, 0, 0, 0.25);*/
 }
 .navbar > .container,
 .navbar > .container-fluid,

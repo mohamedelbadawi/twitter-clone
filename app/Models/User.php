@@ -69,4 +69,18 @@ class User extends Authenticatable
     {
         return $this->following->tweets();
     }
+
+    public function likes()
+    {
+        return $this->hasMany(TweetLike::class);
+    }
+    public function isLiked($tweet)
+    {
+        $tweet_likes=$this->likes()->pluck('tweet_id')->toArray();
+        if (in_array($tweet,$tweet_likes)){
+            return true;
+
+        }
+        return false;
+    }
 }

@@ -28,16 +28,20 @@
                 />
                 <div class="post__footer">
                     <span class="material-icons"> repeat </span>
-                    <span class="material-icons"> favorite_border </span>
+                    <div>
+                        <button style="background: none;border: none;" class="{{ (auth()->user()->isLiked($tweet->id))? 'text-danger' : 'text-primary' }}" wire:click = "like({{$tweet->id}})">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                        <span class="text-dark mr-1">{{$tweet->likesCount()}}</span>
+                    </div>
                     <span class="material-icons"> publish </span>
                 </div>
             </div>
         </div>
         <!-- post ends -->
-
-
 @endforeach
 @if($tweets->hasMorePages())
-<button wire:click="loadMore" type="button" class="btn btn-primary d-flex m-auto">LoadMore</button>
+
+<button wire:click="loadMore"  class="btn btn-primary d-flex m-auto">LoadMore</button>
     @endif
 </div>

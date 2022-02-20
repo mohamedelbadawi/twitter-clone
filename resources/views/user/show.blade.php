@@ -10,18 +10,7 @@
             <p class="profileName  opacity-25" style="color: #4a5568"><span>@</span> {{$user->user_name}}</p>
      @livewire('follow-button',['user'=>$user])
     </div>
-  <div class="d-flex flex-row justify-content-center">
-
-    <div class="d-flex flex-column align-content-center m-4 ">
-    <h4>Following</h4>
-          <h5 class="text-center" style="color: #4a5568;opacity: .8">{{$user->following()->count()}}</h5>
-    </div>
-    <div class="d-flex flex-column align-content-center m-4 ">
-    <h4>Followers</h4>
-      <h5 class="text-center " style="color: #4a5568;opacity: .8">{{$user->followers()->count()}}</h5>
-    </div>
-  </div>
-
+@livewire('followers-following',['user'=>$user])
     <div class="profile_create_tweet">
 {{--        @livewire('create-tweet')--}}
     </div>
@@ -31,5 +20,5 @@
         </div>
     </div>
     @livewire('load-user-profile-tweets',['userId'=>$user->id])
-    <livewire:scripts />
+{{--    <livewire:scripts />--}}
 @endsection

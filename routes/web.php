@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TweetController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,8 @@ Auth::routes();
 
 Route::group(['middleware'=>'auth'],function(){
 Route::get('/tweets',[TweetController::class,'index'])->name('home');
+Route::get('/explore',[HomeController::class,'explore'])->name('home.explore');
+Route::get('/search',[UserController::class,'search'])->name('explore.search');
 Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
 Route::get('/user/{user}',[UserController::class,'show'])->name('user.show');
 });

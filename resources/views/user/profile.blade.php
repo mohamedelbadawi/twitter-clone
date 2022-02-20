@@ -10,18 +10,7 @@
             <p class="profileName  opacity-25" style="color: #4a5568"><span>@</span> {{auth()->user()->user_name}}</p>
 
     </div>
-  <div class="d-flex flex-row justify-content-center">
-
-    <div class="d-flex flex-column align-content-center m-4 ">
-    <h4>Following</h4>
-          <h5 class="text-center" style="color: #4a5568;opacity: .8">500</h5>
-    </div>
-    <div class="d-flex flex-column align-content-center m-4 ">
-    <h4>Followers</h4>
-      <h5 class="text-center " style="color: #4a5568;opacity: .8">500</h5>
-    </div>
-  </div>
-
+@livewire('followers-following',['user'=> auth()->user()])
     <div class="profile_create_tweet">
         @livewire('create-tweet')
     </div>

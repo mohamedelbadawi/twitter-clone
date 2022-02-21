@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,6 +29,7 @@ class HomeController extends Controller
 
     public function explore()
     {
-        return view('explore');
+        $users=User::limit(5)->inRandomOrder()->get();
+        return view('explore',compact('users'));
     }
 }

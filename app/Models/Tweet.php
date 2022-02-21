@@ -26,6 +26,16 @@ class Tweet extends Model
         return $this->likes()->count();
     }
 
+    public function retweets()
+    {
+        return $this->hasMany(TweetRetweet::class);
+
+    }
+
+    public function retweetsCount()
+    {
+        return $this->retweets()->count();
+    }
 
 
 

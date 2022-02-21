@@ -27,8 +27,11 @@
                     alt=""
                 />
                 <div class="post__footer">
-                    <span class="material-icons"> repeat </span>
                     <div>
+                        <button style="background: none;border: none;" class="{{ (auth()->user()->isRetweeted($tweet->id))? 'text-success' : 'text-primary' }}" wire:click = "retweet({{$tweet->id}})">
+                            <i class="fa-solid fa-repeat"></i>                        </button>
+                        <span class="text-dark mr-1">{{$tweet->retweetsCount()}}</span>
+                    </div>                    <div>
                         <button style="background: none;border: none;" class="{{ (auth()->user()->isLiked($tweet->id))? 'text-danger' : 'text-primary' }}" wire:click = "like({{$tweet->id}})">
                             <i class="fa-solid fa-heart"></i>
                         </button>

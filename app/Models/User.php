@@ -74,6 +74,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(TweetLike::class);
     }
+
+    public function retweets()
+    {
+        return $this->hasMany(TweetRetweet::class);
+    }
     public function isLiked($tweet)
     {
         $tweet_likes=$this->likes()->pluck('tweet_id')->toArray();
@@ -82,5 +87,15 @@ class User extends Authenticatable
 
         }
         return false;
+    }
+
+    public function isRetweeted($tweet)
+    {
+        $retweetedTweets=$this->retweets()->pluck('tweet_id')->toArray();
+        if (in_array($tweet,$retweetedTweets)){
+            return true;
+        }
+
+            return false;
     }
 }

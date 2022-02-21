@@ -26,7 +26,7 @@
 
     @endforeach
 @else
-    <div class="m-auto">
+    <div class="ml-5">
         <h2>No users found</h2>
     </div>
 @endif

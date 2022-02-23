@@ -11,33 +11,15 @@ use function Symfony\Component\Translation\t;
 class LoadTweets extends Component
 {
 
-    public $perPage=10;
-    public function like($tweet_id)
-    {
-        if (auth()->user()->isLiked($tweet_id)){
-            DB::table('tweet_likes')->where('tweet_id',$tweet_id)->where('user_id',auth()->id())->delete();
-        }
-        else{
-            DB::table('tweet_likes')->insert(['tweet_id'=>$tweet_id,
-                'user_id'=>auth()->id()
-            ]);
+    public $perPage=100;
+    protected $listeners = ['tweetCreated' => 'render','increment'=>'render'];
 
-        }
-    }
-    public function retweet($tweet_id)
-    {
-        if (auth()->user()->isRetweeted($tweet_id)){
-            DB::table('tweet_retweets')->where('tweet_id',$tweet_id)->where('user_id',auth()->id())->delete();
-        }
-        else{
-            DB::table('tweet_retweets')->insert(['tweet_id'=>$tweet_id,
-                'user_id'=>auth()->id()
-            ]);
-        }
-    }
+
+
     public function loadMore()
     {
        $this->perPage+=10;
+       $this->emit('increment');
     }
 
     public function render()

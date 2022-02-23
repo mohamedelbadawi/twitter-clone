@@ -12,4 +12,9 @@ class TweetController extends Controller
 
         return view('tweets.index');
     }
+
+    public function show(Tweet $tweet)
+    {
+        return view('tweets.show',compact('tweet'));
+    }
 }

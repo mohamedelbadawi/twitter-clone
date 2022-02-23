@@ -19,12 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
+Auth::routes(['verify' => true]);
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware'=>'auth'],function(){
 Route::get('/tweets',[TweetController::class,'index'])->name('home');
+Route::get('/tweets/{tweet}',[TweetController::class,'show'])->name('tweet.show');
 Route::get('/explore',[HomeController::class,'explore'])->name('home.explore');
 Route::get('/search',[UserController::class,'search'])->name('explore.search');
 Route::get('/profile',[UserController::class,'profile'])->name('user.profile');

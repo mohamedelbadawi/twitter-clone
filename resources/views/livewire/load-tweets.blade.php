@@ -1,7 +1,9 @@
-<div wire:poll>
+<div>
+
+
 @foreach($tweets as $tweet)
     <!-- post starts -->
-        <div class="post" style="margin: 30px">
+        <div class="post " style="margin: 30px">
             <div class="post__avatar">
                 <img
                     src="{{asset('images/'.$tweet->user->image_name)}}" alt=""
@@ -24,21 +26,10 @@
                 </div>
                 <img
                     src="{{asset('/storage/'.$tweet->image_name)}}"
-                    alt=""
-                />
-                <div class="post__footer">
-                    <div>
-                        <button style="background: none;border: none;" class="{{ (auth()->user()->isRetweeted($tweet->id))? 'text-success' : 'text-primary' }}" wire:click = "retweet({{$tweet->id}})">
-                            <i class="fa-solid fa-repeat"></i>                        </button>
-                        <span class="text-dark mr-1">{{$tweet->retweetsCount()}}</span>
-                    </div>                    <div>
-                        <button style="background: none;border: none;" class="{{ (auth()->user()->isLiked($tweet->id))? 'text-danger' : 'text-primary' }}" wire:click = "like({{$tweet->id}})">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
-                        <span class="text-dark mr-1">{{$tweet->likesCount()}}</span>
-                    </div>
-                    <span class="material-icons"> publish </span>
-                </div>
+                    alt=""/>
+
+                @livewire('tweet-footer',['tweet'=>$tweet])
+
             </div>
         </div>
         <!-- post ends -->
@@ -48,3 +39,5 @@
 <button wire:click="loadMore"  class="btn btn-primary d-flex m-auto">LoadMore</button>
     @endif
 </div>
+
+

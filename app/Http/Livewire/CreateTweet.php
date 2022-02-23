@@ -13,6 +13,8 @@ class CreateTweet extends Component
     public $content;
     public $image_name;
 
+
+
     public function resetInputField()
     {
         $this->content = '';
@@ -25,14 +27,15 @@ class CreateTweet extends Component
             'content' => 'required',
             'image_name'=>'nullable|file'
         ]);
-
-
         $data['user_id'] = auth()->id();
         if ($this->image_name!='' && $this->image_name!=null){
         $data['image_name'] = $this->image_name->store('images','public');
         }
         Tweet::create($data);
         $this->resetInputField();
+        $this->emit('tweetCreated');
+
+
     }
 
     public function render()

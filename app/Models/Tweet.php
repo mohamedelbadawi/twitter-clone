@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tweet extends Model
 {
+    //TODO:: implement Comments and show tweet page
+
     use HasFactory;
 
     protected $guarded = [];
@@ -19,6 +21,11 @@ class Tweet extends Model
     public function likes()
     {
         return $this->hasMany(TweetLike::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
     }
 
     public function likesCount()
@@ -36,7 +43,5 @@ class Tweet extends Model
     {
         return $this->retweets()->count();
     }
-
-
 
 }

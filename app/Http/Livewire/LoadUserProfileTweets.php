@@ -3,52 +3,36 @@
 namespace App\Http\Livewire;
 
 use App\Models\Tweet;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class LoadUserProfileTweets extends Component
 {
+    use WithPagination;
 
-    public $perPage=10;
+    public $perPage = 100;
     public $userId;
 
-    public function like($tweet_id)
-    {
-        if (auth()->user()->isLiked($tweet_id)){
-            DB::table('tweet_likes')->where('tweet_id',$tweet_id)->where('user_id',auth()->id())->delete();
+    protected $listeners = ['load-more' => 'loadMore'];
 
-        }
-        else{
-            DB::table('tweet_likes')->insert(['tweet_id'=>$tweet_id,
-                'user_id'=>auth()->id()
-            ]);
-
-        }
-    }
-
-    public function retweet($tweet_id)
-    {
-     if (auth()->user()->isRetweeted($tweet_id)){
-        DB::table('tweet_retweets')->where('tweet_id',$tweet_id)->where('user_id',auth()->id())->delete();
-     }
-     else{
-         DB::table('tweet_retweets')->insert(['tweet_id'=>$tweet_id,
-             'user_id'=>auth()->id()
-         ]);
-     }
-    }
     public function mount($userId)
     {
-    $this->userId= $userId;
+        $this->userId = $userId;
     }
+
+    public function getTweets()
+    {
+        return Tweet::where('user_id', $this->userId)->latest()->paginate($this->perPage);
+    }
+
     public function loadMore()
     {
-        $this->perPage+=10;
+        $this->perPage =$this->perPage+ 10;
+
     }
     public function render()
     {
-        $tweets=Tweet::where('user_id',$this->userId)->latest()->paginate($this->perPage);
-        return view('livewire.load-user-profile-tweets',compact('tweets'));
+        return view('livewire.load-user-profile-tweets',['tweets'=>$this->getTweets()]);
     }
+
 }

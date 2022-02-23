@@ -29,6 +29,7 @@ Route::get('/explore',[HomeController::class,'explore'])->name('home.explore');
 Route::get('/search',[UserController::class,'search'])->name('explore.search');
 Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
 Route::get('/user/{user}',[UserController::class,'show'])->name('user.show');
+
 });
 
 

@@ -1,9 +1,9 @@
 @extends('layouts.front')
 @section('content')
     <div class="container-fluid mb-5">
-        <img src="{{asset('images/car.jpg')}}" class="img-fluid" style="height: 40vh; width: 130vh" alt="...">
+        <img src="{{asset('/storage/'.auth()->user()->cover_name)}}" class="img-fluid" style="height: 40vh; width: 130vh" alt="...">
         <div class="profileimg">
-            <img src="{{asset('images/profile.png')}}" class="profile rounded" style="height: 15vh; width: 15vh" alt="">
+            <img src="{{asset('storage/'.$user->image_name)}}" class="profile rounded" style="height: 15vh; width: 15vh" alt="">
 
         </div>
             <h5 class="mt-2 profileName">{{$user->name}}</h5>

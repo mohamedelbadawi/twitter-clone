@@ -1,28 +1,24 @@
 <!-- sidebar starts -->
-<div class="sidebar">
+<div class="sidebar ">
     <i class="fab fa-twitter"></i>
     <div class="sidebarOption {{request()->routeIs('home')?'active':''}}">
 
         <span class="material-icons"> home </span>
-        <a href="{{route('home')}}" style="text-decoration: none;background-color: transparent;"><h2>Home</h2></a>
+        <a href="{{route('home')}}" style="text-decoration: none;background-color: transparent; {{request()->routeIs('home')?'color:#50b7f5;':'color:black;'}}"><h2>Home</h2></a>
     </div>
 
-    <div class="sidebarOption">
+    <div class="sidebarOption {{request()->routeIs('home.explore')?'active':''}}">
         <span class="material-icons"> search </span>
-        <a href="{{route('home.explore')}}" style="text-decoration: none;background-color: transparent;">
+        <a href="{{route('home.explore')}}" style="text-decoration: none;background-color: transparent; {{request()->routeIs('home.explore')?'color:#50b7f5;':'color:black;'}}">
 
             <h2>Explore</h2>
         </a>
     </div>
 
-    <div class="sidebarOption">
-        <span class="material-icons"> notifications_none </span>
-        <h2>Notifications</h2>
 
-    </div>
-    <div class="sidebarOption {{request()->routeIs('user')?'active':''}}">
+    <div class="sidebarOption {{request()->routeIs('user.profile')?'active':''}}">
         <span class="material-icons"> perm_identity </span>
-        <a href="{{route('user.profile')}}" style="text-decoration: none;"
+        <a href="{{route('user.profile')}}" style="text-decoration: none; {{request()->routeIs('user.profile')?'color:#50b7f5;':'color:black;'}}"
            class="{{request()->routeIs('user')?'active':''}}"><h2>Profile</h2></a>
     </div>
 

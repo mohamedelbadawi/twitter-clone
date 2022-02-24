@@ -16,11 +16,10 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
 
 Auth::routes(['verify' => true]);
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware'=>'auth'],function(){
 Route::get('/tweets',[TweetController::class,'index'])->name('home');
@@ -29,6 +28,8 @@ Route::get('/explore',[HomeController::class,'explore'])->name('home.explore');
 Route::get('/search',[UserController::class,'search'])->name('explore.search');
 Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
 Route::get('/user/{user}',[UserController::class,'show'])->name('user.show');
+Route::get('/edit/profile/{user}',[UserController::class,'editProfile'])->name('user.edit.profile');
+Route::post('/update/profile',[UserController::class,'updateProfile'])->name('profile.update');
 
 });
 
